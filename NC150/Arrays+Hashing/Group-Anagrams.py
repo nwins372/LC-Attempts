@@ -52,6 +52,7 @@ def groupAnagrams2(self, strs: List[str]) -> List[List[str]]:  # type: ignore
     # We are limited to lowercase English letters, so we can make an array of size 26
     # ASCII value of "a" is 97, and "z" is 122
 
+
     # eat (e = 101 - 97 = 4), (a = 97 - 97 = 0), (t = 116 - 97 = 19)
     res = defaultdict(list)
     for str in strs:
@@ -59,5 +60,5 @@ def groupAnagrams2(self, strs: List[str]) -> List[List[str]]:  # type: ignore
 
         for char in str:
             char_count[ord(char) - ord('a')] += 1
-        res[tuple(char_count)].append(str)
+        res[tuple(char_count)].append(str)  # keys have to be immutable so we make tuple
     return list(res.values())
