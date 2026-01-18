@@ -38,12 +38,22 @@ def reverseListRecur(self, head: Optional[ListNode]) -> Optional[ListNode]: #typ
     return dummy
 
 def reverseListIter(self, head: Optional[ListNode]) -> Optional[ListNode]: #type: ignore
+
+    # Intialize 3 pointers - previous node (prev), current node (curr), next node (temp)
     prev = None
     curr = head
     while curr:
+        # Store pointer to the next node
         temp = curr.next
+
+        # Set the current node's next pointer to the previous node (reversing)
         curr.next = prev
+
+        # Move the previous pointer forward 
         prev = curr
+
+        # move the current pointer forward
         curr = temp
     
+    # prev should be the last element (curr would be null)
     return prev
